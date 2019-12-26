@@ -1,0 +1,8 @@
+[Rr]elease/
+[Dd]ebug/
+x64/
+.vs/
+*.vcxproj.filters
+*.vcxproj.user
+*.props
+*.DotSettings.user
