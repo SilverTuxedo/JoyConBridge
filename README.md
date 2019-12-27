@@ -65,10 +65,18 @@ def main():
 ```
 
 
-## Build dependencies
+### Building `pyjoyconbridge`
 
-* Boost.Python
-	* Note: This is required only if you intend to build `pyjoyconbridge`.
+This project uses Boost.Python.
+
+* Install [Python](https://www.python.org/downloads/).
+* Download and configure [Boost](https://www.boost.org/).
+* Set the following environment variables:
+	* `BOOST_ROOT`: The directory where Boost is located.
+	* `PYTHON_ROOT`: The directory where Python is installed.
+* Build using Visual Studio.
+
+If you don't want to change your environment variables, you can manually replace `$(...)` occurences in `Boost.Python.props`.
 
 
 ## Limitations
