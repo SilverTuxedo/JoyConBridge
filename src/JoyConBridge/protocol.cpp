@@ -58,7 +58,7 @@ uint8_t getLedSequence(const std::array<LedState, 4>& states)
 std::array<uint16_t, 2> decodeAnalogStick(const uint8_t* stickDataArray)
 {
 	const uint16_t horizontal = stickDataArray[0] | ((stickDataArray[1] & 0xF) << 8);
-	const uint16_t vertical   = (stickDataArray[1] >> 4) | (stickDataArray[2] << 4);
+	const uint16_t vertical = (stickDataArray[1] >> 4) | (stickDataArray[2] << 4);
 	return {horizontal, vertical};
 }
 

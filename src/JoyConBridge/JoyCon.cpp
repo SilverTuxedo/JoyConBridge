@@ -127,8 +127,7 @@ void JoyCon::setPlayerLeds(protocol::LedState led1, protocol::LedState led2, pro
 Buffer JoyCon::sendSubcommand(uint8_t subcommandId, const Buffer& commandData)
 {
 	static const auto PACKET_SKIP_LIMIT = 100; // The limit to the amount of garbage packets that is acceptable.
-	const auto command                  = protocol::getSubCommandBuffer(COMMAND_START_SUBCOMMAND, subcommandId,
-	                                                                    commandData);
+	const auto command = protocol::getSubCommandBuffer(COMMAND_START_SUBCOMMAND, subcommandId, commandData);
 	m_device.write(command);
 
 	size_t packetsRead = 0;
@@ -234,7 +233,7 @@ void JoyCon::updateCalibrationData()
 	updateRightStickCalibrationData(factoryCalibrationValuesRight);
 
 	const auto rawAccelerometerDataStart = sensorsCalibrationData.data();
-	const auto rawGyroscopeDataStart     = rawAccelerometerDataStart + sizeof(ThreeAxesCalibrationData);
+	const auto rawGyroscopeDataStart = rawAccelerometerDataStart + sizeof(ThreeAxesCalibrationData);
 	ThreeAxesCalibrationData data{};
 	std::memcpy(&data, rawAccelerometerDataStart, sizeof(data));
 	updateAccelerometerCalibrationData(data);
@@ -290,14 +289,14 @@ std::optional<Buffer> JoyCon::readUserCalibrationData(uint32_t offset, uint8_t s
 {
 	static const uint16_t DATA_EXISTS_MAGIC = 0xA1B2;
 
-	auto readResult            = readSpi(offset - sizeof(DATA_EXISTS_MAGIC), size + sizeof(DATA_EXISTS_MAGIC));
+	auto readResult = readSpi(offset - sizeof(DATA_EXISTS_MAGIC), size + sizeof(DATA_EXISTS_MAGIC));
 	const auto startMagicValue = *(reinterpret_cast<uint16_t*>(readResult.data()));
 	if (DATA_EXISTS_MAGIC != startMagicValue) {
 		return std::nullopt;
 	}
 
 	const auto calibrationDataStart = readResult.begin() + sizeof(DATA_EXISTS_MAGIC);
-	const auto calibrationDataEnd   = calibrationDataStart + size;
+	const auto calibrationDataEnd = calibrationDataStart + size;
 	return Buffer(calibrationDataStart, calibrationDataEnd);
 }
 
