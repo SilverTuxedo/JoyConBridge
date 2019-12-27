@@ -76,7 +76,7 @@ This project uses Boost.Python.
 	* `PYTHON_ROOT`: The directory where Python is installed.
 * Build using Visual Studio.
 
-If you don't want to change your environment variables, you can manually replace `$(...)` occurences in `Boost.Python.props`.
+If you don't want to change your environment variables, you can manually replace `$(...)` occurrences in `Boost.Python.props`.
 
 
 ## Limitations
