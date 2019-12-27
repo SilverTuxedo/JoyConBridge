@@ -83,37 +83,37 @@ Hand JoyCon::getLikelyHand() const
 	return m_likelyHand;
 }
 
-void JoyCon::setPlayerLedsByNumber(unsigned playerNumber)
+void JoyCon::setPlayerLedsByNumber(unsigned int playerNumber)
 {
+	using protocol::LedState;
+
 	switch (playerNumber) {
 	case 1: // *---
-		setPlayerLeds(protocol::LedState::ON, protocol::LedState::OFF, protocol::LedState::OFF,
-		              protocol::LedState::OFF);
+		setPlayerLeds(LedState::ON, LedState::OFF, LedState::OFF, LedState::OFF);
 		break;
 	case 2: // **--
-		setPlayerLeds(protocol::LedState::ON, protocol::LedState::ON, protocol::LedState::OFF, protocol::LedState::OFF);
+		setPlayerLeds(LedState::ON, LedState::ON, LedState::OFF, LedState::OFF);
 		break;
 	case 3: // ***-
-		setPlayerLeds(protocol::LedState::ON, protocol::LedState::ON, protocol::LedState::ON, protocol::LedState::OFF);
+		setPlayerLeds(LedState::ON, LedState::ON, LedState::ON, LedState::OFF);
 		break;
 	case 4: // ****
-		setPlayerLeds(protocol::LedState::ON, protocol::LedState::ON, protocol::LedState::ON, protocol::LedState::ON);
+		setPlayerLeds(LedState::ON, LedState::ON, LedState::ON, LedState::ON);
 		break;
 	case 5: // *--*
-		setPlayerLeds(protocol::LedState::ON, protocol::LedState::OFF, protocol::LedState::OFF, protocol::LedState::ON);
+		setPlayerLeds(LedState::ON, LedState::OFF, LedState::OFF, LedState::ON);
 		break;
 	case 6: // *-*-
-		setPlayerLeds(protocol::LedState::ON, protocol::LedState::OFF, protocol::LedState::ON, protocol::LedState::OFF);
+		setPlayerLeds(LedState::ON, LedState::OFF, LedState::ON, LedState::OFF);
 		break;
 	case 7: // *-**
-		setPlayerLeds(protocol::LedState::ON, protocol::LedState::OFF, protocol::LedState::ON, protocol::LedState::ON);
+		setPlayerLeds(LedState::ON, LedState::OFF, LedState::ON, LedState::ON);
 		break;
 	case 8: // -**-
-		setPlayerLeds(protocol::LedState::OFF, protocol::LedState::ON, protocol::LedState::ON, protocol::LedState::OFF);
+		setPlayerLeds(LedState::OFF, LedState::ON, LedState::ON, LedState::OFF);
 		break;
 	default:
-		setPlayerLeds(protocol::LedState::FLASHING, protocol::LedState::FLASHING, protocol::LedState::FLASHING,
-		              protocol::LedState::FLASHING);
+		setPlayerLeds(LedState::FLASHING, LedState::FLASHING, LedState::FLASHING, LedState::FLASHING);
 	}
 }
 
